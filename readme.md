@@ -17,8 +17,10 @@ pip install gensim
 * Tokenizing Autocomplete (http://loopj.com)
 
 ## How to get keyword
-The system clusters words of titles, then counts each words. It suggests the highest score word according to given word.
+The system clusters words of titles from abc.net.au, then counts each words. It suggests the highest score word according to given word.
 
 ![alt text](https://github.com/brenden17/Realtime-Trend-with-Flask-on-Redis/blob/master/img/result.png "image")
+27/Jan/2016 
 
 ![alt text](https://github.com/brenden17/Realtime-Trend-with-Flask-on-Redis/blob/master/img/result2.png "image")
+27/Jan/2016 
