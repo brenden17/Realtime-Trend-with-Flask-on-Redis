@@ -24,3 +24,8 @@ The system clusters words of titles from abc.net.au, then counts each words. It 
 
 ![alt text](https://github.com/brenden17/Realtime-Trend-with-Flask-on-Redis/blob/master/img/result2.png "image")
 27/Jan/2016 
+
+## Word2Vec
+
+Original system was developed in word2vec. But It did not work properly. It was changed to clustering word of article's title.
+resource_for_word2vec.py, test.py, 26-27.txt, 26-27_words.txt and 28-19_noun.txt are for word2vec. 
