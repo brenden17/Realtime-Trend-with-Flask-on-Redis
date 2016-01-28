@@ -1,0 +1,21 @@
+<html>
+<head>
+	<link href="/static/token-input-facebook.css" rel="stylesheet" media="screen">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/jquery.tokeninput.js"></script>
+</head>
+
+<body>
+    <h3>Suggest keyword based on article's titles of abc.net.au</h3>
+    <div>
+        <input type="text" id="demo-input-facebook-theme" name="blah2" />
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("#demo-input-facebook-theme").tokenInput("http://127.0.0.1:5000/query", {
+                theme: "facebook"
+            });
+        });
+        </script>
+    </div>
+</body>
+</html>
