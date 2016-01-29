@@ -1,4 +1,5 @@
 import re
+import time
 from datetime import date, timedelta
 from itertools import combinations_with_replacement
 
@@ -31,7 +32,7 @@ class NewspaperRosource:
         self.stopword = set('abc,news,australian,corporation,s'.split(','))
 
         if fetch:
-            self.fetch_article_url()
+            self.fetch_article_url(memoize=True)
 
     def fetch_article_url(self, memoize=False):
         paper = newspaper.build(self.url, memoize_articles=memoize) or []
@@ -76,6 +77,7 @@ class NewspaperRosource:
 
         # update words based on tags
         self.update_words()
+        selt.clear_tags()
 
     def filter_stopword(self, words):
         return [w for w in words if not w in self.stopword]
@@ -114,6 +116,13 @@ class NewspaperRosource:
         word_key = self.word_key(keyword)
         return [w for w, c in redis.zrange(word_key, 0, -1, withscores=True)[-self.candidate:]]
 
+    def clear_tags(self):
+        tag_key = self.tag_key('*')
+        pipe = redis.pipeline()
+        tags = pipe.keys(tag_key)
+        pipe.delete(*tags)
+        pipe.execute()
+
     def date_key(self, date_key):
         return self.create_key('date', date_key)
 
@@ -137,7 +146,9 @@ def suggest_keyword(keyword):
 
 
 if __name__ == '__main__':
+    CHECKED_TIME = 60
     NR = NewspaperRosource('abc', 'http://www.abc.net.au', fetch=True, save=True)
-    print NR.query('lewd')
-    print '#####################'
-    print NR.query('queensland')
+
+    while True:
+        NR.fetch_article_url(memoize=True)
+        time.sleep(CHECKED_TIME) # every one hour

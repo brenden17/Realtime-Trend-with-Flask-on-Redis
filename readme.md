@@ -19,6 +19,8 @@ pip install gensim
 ## How to get keyword
 The system clusters words of titles from abc.net.au, then counts each words. It suggests the highest scored word according to given word.
 
+NewspaperRosource fetchs new atitle's titles every one hours. It weights word appearance occurrence.
+
 ![alt text](https://github.com/brenden17/Realtime-Trend-with-Flask-on-Redis/blob/master/img/result.png "image")
 27/Jan/2016 
 
