@@ -2,7 +2,7 @@
 
 It implements keyword suggestion like google with Redis based on article's titles of abc.net.au.
 
-## Reqirements
+## Requirements
 
 * Redis server
 * Python library
